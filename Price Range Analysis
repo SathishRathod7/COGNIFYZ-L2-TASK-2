@@ -1,0 +1,17 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df=pd.read_csv('/content/Dataset .csv')
+df
+
+most_common_price_range = df['Price range'].mode()[0]
+most_common_price_range
+
+avg_rating_by_price_range = df.groupby('Price range')['Aggregate rating'].mean()
+avg_rating_by_price_range
+
+highest_avg_rating_range = avg_rating_by_price_range.idxmax()
+rating_color = df[df['Price range'] == highest_avg_rating_range]['Rating color'].mode()[0]
+rating_color
